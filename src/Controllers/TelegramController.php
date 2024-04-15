@@ -9,7 +9,7 @@ use Deminua\LaravelTgbot\Models\TelegramBot;
 use Deminua\LaravelTgbot\Models\TelegramClient;
 
 /**
- *  V.1.2.0
+ *  DEV
  */
 
 class TelegramController
