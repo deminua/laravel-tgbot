@@ -85,6 +85,12 @@ php artisan route:list
   GET|HEAD   telegram/edit/{bot}/test_client/{client} ...
 ```
 
+Migrate 
+===
+Migrate create tables: telegram_bots, telegram_clients
+```
+php artisan migrate
+```
 
 Data to View
 ===
