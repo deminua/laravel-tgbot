@@ -9,15 +9,12 @@
         "laravel telegram",
         "laravel"
     ],
-    "authors": [
-        {
-            "name": "Dem"
-        }
-    ],
     "require": {
         "php": "^8.2.17",
         "irazasyed/telegram-bot-sdk": "^3.14"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Deminua\\LaravelTgbot\\": "src/"
@@ -30,6 +27,5 @@
         {
             "name": "Dem"
         }
-    ],
-    "minimum-stability": "stable"
+    ]
 }
