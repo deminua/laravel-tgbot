@@ -2,7 +2,19 @@
     "name": "deminua/laravel-tgbot",
     "description": "Laravel panel and sended telegram bot",
     "version": "1.0.3",
+    "license": "BSD-3-Clause",
     "type": "library",
+    "keywords": [
+        "telegram",
+        "telegram bot",
+        "laravel telegram",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Dem"
+        }
+    ],
     "require": {
         "php": "^8.2.17",
         "irazasyed/telegram-bot-sdk": "^3.14"
