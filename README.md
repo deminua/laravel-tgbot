@@ -8,7 +8,7 @@ Installing
 Add the dependency to your project:
 
 ```bash
-composer require deminua/laravel-tgbot
+composer require deminua/laravel-tgbot dev-main
 ```
 
 Usage
