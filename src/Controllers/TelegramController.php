@@ -63,7 +63,7 @@ class TelegramController
     {
         if ($request->from) {
             $client = new TelegramClient();
-            $client->fill(json_decode($request->from, true));
+            $client->id = $request->from;
             $client->bot_id = $bot->id;
             $client->save();
         }

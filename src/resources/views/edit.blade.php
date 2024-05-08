@@ -8,7 +8,6 @@
     <div class="row justify-content-center">
 
         @if (session('status'))
-            {{-- <div class="alert alert-success"> --}}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>{{ session('status') }}</strong> 
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -51,33 +50,34 @@
             <h2>getUpdates</h2>
             <table class="table table-hover">
                 <thead>
+                    <th scope="col"></th>
                     <th scope="col">id</th>
-                    <th scope="col">is_bot</th>
                     <th scope="col">first_name</th>
                     <th scope="col">username</th>
-                    <th scope="col">language_code</th>
-                    <th scope="col">date</th>
-                    <th scope="col">text</th>
+                    <th scope="col">type</th>
                     <th scope="col">add</th>
                 </thead>
                 <tbody>
-                    @foreach($telegram->getUpdates() as $value )
+                    @foreach($telegram->getUpdates() as $values)
+                    @foreach($values as $key => $value)
+                    @if($key != 'update_id')
                     <tr>
-                        <td>{{ $value->message->from->id }}</td>
-                        <td>{{ $value->message->from->is_bot ? 'Yes' : "No" }}</td>
-                        <td>{{ $value->message->from->first_name }}</td>
-                        <td>{{ $value->message->from->username }}</td>
-                        <td>{{ $value->message->from->language_code }}</td>
-                        <td>{{ date('Y-m-d H:i:s', $value->message->date) }}</td>
-                        <td>{{ $value->message->text }}</td>
+
+                        <td><pre>{{ print_r($value, true) }}</pre></td>
+                        <td>{{ $value['chat']['id'] ?? '-' }}</td>
+                        <td>{{ $value['chat']['first_name'] ?? $value['chat']['title'] }}</td>
+                        <td>{{ $value['chat']['username'] ?? '-' }}</td>
+                        <td>{{ $value['chat']['type'] ?? '-' }}</td>
                         <td>
                             <form method="POST" action="{{ url()->current() }}/new_client">
                                 @csrf
-                                <input name="from" type="hidden" value="{{ json_encode($value->message->from) }}">
+                                <input name="from" type="hidden" value="{{ json_encode($value['chat']['id']) }}">
                                 <button type="submit" class="btn btn-sm btn-outline-secondary py-0 px-2">+</button>
                             </form>
                         </td>
                     </tr>
+                    @endif
+                    @endforeach
                     @endforeach
                 </tbody>
             </table>
